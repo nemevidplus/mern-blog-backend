@@ -10,6 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors({
     origin: 'https://mern-blog-frontend-self.vercel.app', // Correct frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add allowed HTTP methods
+    credentials: true // Include credentials if needed
 }));
 
 const MONGO_DB_URL = process.env.MONGO_DB_URL;
