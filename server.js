@@ -8,7 +8,9 @@ const app= express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(cors());
+app.use(cors({
+    origin: 'https://mern-blog-frontend-1m303z9j3-evas-projects-74f2b723.vercel.app',
+  }));
 
 const MONGO_DB_URL = process.env.MONGO_DB_URL;
 const postSchema = mongoose.Schema(
