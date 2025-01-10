@@ -9,10 +9,13 @@ const app= express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors({
-    origin: 'https://mern-blog-frontend-self.vercel.app', // Correct frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add allowed HTTP methods
-    credentials: true // Include credentials if needed
+    origin: 'https://mern-blog-frontend-self.vercel.app', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS
+    credentials: true // Allow credentials (if needed)
 }));
+
+// Handle OPTIONS requests explicitly
+app.options("*", cors());
 
 const MONGO_DB_URL = process.env.MONGO_DB_URL;
 const postSchema = mongoose.Schema(
