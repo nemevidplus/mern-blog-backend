@@ -8,6 +8,14 @@ const app= express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+// Debugging Middleware
+app.use((req, res, next) => {
+    console.log(`Incoming Request: ${req.method} ${req.url}`, req.body);
+    next(); // Pass control to the next middleware or route handler
+});
+
+
 app.use(cors({
     origin: 'https://mern-blog-frontend-self.vercel.app', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS
